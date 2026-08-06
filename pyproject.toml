@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jabbervec"
+version = "0.1.0"
+description = "A playful Letter2Vec lab for character embeddings and English-ish nonsense words."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Dave Black" }]
+dependencies = [
+    "numpy>=1.24",
+    "torch>=2.0",
+    "matplotlib>=3.7",
+    "scikit-learn>=1.3",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+jabbervec-train = "jabbervec.train:main"
+jabbervec-generate = "jabbervec.generate:main"
+jabbervec-visualize = "jabbervec.visualize:main"
+jabbervec-low-rank = "jabbervec.low_rank:main"
