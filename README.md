@@ -90,11 +90,23 @@ jabbervec-l2v/
 
 From the repo root:
 
+**bash**
+
 ```bash
 python -m venv .venv_jabber
 . .venv_jabber/bin/activate
 pip install -e .
 ```
+
+**Windows PowerShell**
+
+```Windows PowerShell
+python -m venv .venv_jabber
+.\.venv_jabber\Scripts\Activate.ps1
+pip install -e .
+```
+
+For CMD instead of PowerShell, replace `Activate.ps1` with `activate.bat`
 
 PyTorch is the heaviest dependency. If install fails, install the appropriate PyTorch wheel for your system, then rerun `pip install -e .`.
 
