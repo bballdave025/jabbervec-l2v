@@ -90,7 +90,7 @@ jabbervec-l2v/
 
 From the repo root:
 
-**bash**
+### **bash**
 
 ```bash
 python -m venv .venv_jabber
@@ -98,7 +98,7 @@ python -m venv .venv_jabber
 pip install -e .
 ```
 
-**Windows PowerShell**
+### **Windows PowerShell**
 
 ```Windows PowerShell
 python -m venv .venv_jabber
@@ -108,9 +108,20 @@ pip install -e .
 
 For CMD instead of PowerShell, replace `Activate.ps1` with `activate.bat`
 
-PyTorch is the heaviest dependency. If install fails, install the appropriate PyTorch wheel for your system, then rerun `pip install -e .`.
+If PowerShell blocks `Activate.ps1`, check the policy with `Get-ExecutionPolicy -List`. 
+For this PowerShell session only, allow local scripts with 
+`Set-ExecutionPolicy -Scope Process RemoteSigned`, then retry. The setting ends when 
+you close the session.
+
+### Note for any install
+
+PyTorch is the heaviest dependency. If install fails, install the appropriate PyTorch 
+wheel for your system, then rerun `pip install -e .`. If that doesn't make sense,
+ask you AI Assistant of choice or use Google Search with AI Mode.
 
 ## Run the tiny experiment
+
+### UNIX/Linux(R) `bash`
 
 ```bash
 python -m jabbervec.train \
@@ -134,6 +145,36 @@ Or:
 ```bash
 bash examples/run_tiny_experiment.sh
 ```
+
+### Windows PowerShell
+
+```Windows PowerShell
+python -m jabbervec.train `
+  --input examples/tiny_corpus.txt `
+  --outdir runs/tiny `
+  --embedding-dim 64 `
+  --epochs 30
+
+python -m jabbervec.visualize `
+  --checkpoint runs/tiny/model.pt `
+  --out runs/tiny/char_embeddings_pca.png
+
+python -m jabbervec.generate `
+  --checkpoint runs/tiny/model.pt `
+  --prompt kr `
+  --length 120
+```
+
+or
+
+```Windows PowerShell
+.\examples\run_tiny_experiment.ps1
+```
+
+If PowerShell blocks the experiment script (or if it earlier blocked `Activate.ps1`,) check 
+the policy with `Get-ExecutionPolicy -List`. For this PowerShell session only, allow local 
+scripts with `Set-ExecutionPolicy -Scope Process RemoteSigned`, then retry. The setting 
+ends when you close the session.
 
 ## Dataset suggestions
 
