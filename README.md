@@ -91,8 +91,8 @@ jabbervec-l2v/
 From the repo root:
 
 ```bash
-python -m venv .venv
-. .venv/bin/activate
+python -m venv .venv_jabber
+. .venv_jabber/bin/activate
 pip install -e .
 ```
 
